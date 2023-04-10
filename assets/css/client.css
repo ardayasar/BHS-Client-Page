@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+*{
+    font-family: 'DM Sans', sans-serif;
+}
+
+*{
+scrollbar-width: auto;
+scrollbar-color: #929292 rgb(24, 24, 24);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+background-color: #929292;
+border-radius: 10px;
+border: 3px solid rgb(24, 24, 24);
+}
+
+button{
+    border: 1px solid rgb(171, 171, 171);
+    width: 100%;
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: transparent;
+    color: rgb(171, 171, 171);
+    cursor: pointer;
+}
+
+button[class="save"]{
+    border: 1px solid #1376ff;
+    width: 90px;
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: #1376ff;
+    color: rgb(206, 206, 206);
+    cursor: pointer;
+}
+
+button[class="discard"]{
+    border: 1px solid #ff1313;
+    width: 90px;
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: transparent;
+    color: rgb(206, 206, 206);
+    cursor: pointer;
+}
+
+input{
+    border: 1px solid rgba(171, 171, 171, 0.532);
+    width: 80%;
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: transparent;
+    color: rgb(171, 171, 171);
+    padding: 4px 10px;
+}
+
+input:disabled{
+    background-color: #92929215;
+    color: rgb(171, 171, 171);
+}
+
+html{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to right top, #043887, #002d84, #002280, #04147a, #0f0074);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+div[class="holder"]{
+    width: 290px;
+    height: 360px;
+    box-shadow: 0px 0px 10px 0.4px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    background-color: rgb(24, 24, 24);
+    padding: 5px 20px;
+    color: rgb(185, 185, 185);
+}
+
+/* Information Panel - Start */
+
+div[class="information"] > h1, h2, h3, h4, h5{
+    color: rgb(185, 185, 185);
+    padding: 0;
+    margin-bottom: 0;
+}
+
+div[class="information"] > p{
+    color: rgba(255, 255, 255, 0.379);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+div[class="information"]{
+    border-bottom: 1px solid rgb(57, 57, 57);
+    padding-bottom: 10px;
+}
+
+div[class="information"] > h2 > i{
+    cursor: pointer;
+}
+
+/* Device List - Start */
+
+div[class="holder"] > div[class="list"]{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
+    max-height: 220px;
+    overflow-y: scroll;
+}
+
+div[class="holder"] > div[class="list"] > div[class="device"]{
+    border: 1px solid rgba(255, 255, 255, 0.095);
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+div[class="holder"] > div[class="list"] > div[class="device"] > p{
+    text-align: center;
+    margin: 0;
+}
+
+div[class="holder"] > div[class="list"] > div[class="device"] > p > nick{
+    color: rgba(255, 255, 255, 0.3);
+}
+
+div[class="holder"] > div[class="list"] > div[class="device"] > p > nick::before{
+    content: "(";
+}
+
+div[class="holder"] > div[class="list"] > div[class="device"] > p > nick::after{
+    content: ")";
+}
+
+div[class="holder"] > div[class="list"] > div[class="device"]:hover{
+    border: 1px solid rgba(255, 255, 255, 0.354);
+}
+
+div[class="holder"] > div[class="list"] > div[class="device"][selected]{
+    border: 1px solid rgba(255, 255, 255, 0.587);
+}
+
+/* Category - Start */
+
+div[class="holder"] > div[class="categories"]{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+div[class="holder"] > div[class="categories"] > div[class="category"]{
+    border: 1px solid rgba(255, 255, 255, 0.095);
+    border-radius: 4px;
+    padding: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+    /* height: auto; */
+}
+
+div[class="holder"] > div[class="categories"] > div[class="category"] > div[class="files"]{
+    display: none;
+}
+
+div[class="holder"] > div[class="categories"] > div[class="category"][open="true"]{
+    min-height: 140px;
+    height: 140px;
+}
+
+div[class="holder"] > div[class="categories"] > div[class="category"][open="true"] > div[class="files"]{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    max-height: 120px;
+    overflow-y: scroll;
+}
+
+div[class="holder"] > div[class="categories"] > div[class="category"] > p{
+    margin: 0;
+    height: 20px;
+}
+
+div[class="holder"] > div[class="categories"] > div[class="category"] > p > i{
+    margin-left: 5px;
+}
+
+div[class="holder"] > div[class="categories"] > div[class="category"][open="true"] > div[class="files"] > div[class="file"]{
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.277);
+    border-radius: 6px;
+    padding: 6px 12px;
+}
+
+div[class="holder"] > div[class="categories"] > div[class="category"][open="true"] > div[class="files"] > div[class="file"] > p{
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+div[class="holder"] > div[class="categories"] > div[class="category"][open="true"] > div[class="files"] > div[class="file"] > i{
+    margin-left: auto;
+    display: none;
+}
+
+div[class="holder"] > div[class="categories"] > div[class="category"][open="true"] > div[class="files"] > div[class="file"]:hover > i{
+    display: block;
+    cursor: pointer;
+}
+
+/* Options */
+
+div[class="holder"] > div[class="options"]{
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-top: 10px;
+}
+
+div[class="holder"] > div[class="options"] > div[class="buttons"]{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+div[class="holder"] > div[class="options"] > button[class="save"]{
+    margin-top: 10px;
+    display: inline-block;
+    width: 252px;
+    padding: 4px 10px;
+}
+
+div[class="holder"] > div[class="options"] > div[class="buttons"]{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+div[class="holder"] > div[class="options"] > div[class="buttons"] > select{
+    width: 43%;
+    border: 1px solid rgba(255, 255, 255, 0.095);
+    background-color: transparent;
+    border-radius: 4px;
+    color: rgb(171, 171, 171);
+}
+
+/* Filter */
+
+div[class="holder"] > div[class="filter"]{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+/* Covers */
+
+.fullCover{
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000b2;
+    display: none;
+}
+
+.fullCover[id="newContent"] > .inputHolder{
+    width: 500px;
+    height: auto;
+}
+
+.fullCover > .inputHolder{
+    padding: 20px 20px;
+    background-color: rgb(15, 31, 212);
+    width: 240px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 8px;
+}
+
+.fullCover > .inputHolder > button[id="addCategory"]{
+    width: 89%;
+    background-color: rgb(21, 21, 21);
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 10px 0.1px rgba(21, 21, 21, 0.399);
+}
+
+.fullCover > .inputHolder > button[id="addCategory"]:hover{
+    border: 1px solid rgba(255, 255, 255, 0.583);
+}
+
+.fullCover > .inputHolder > button[id="closeCategory"]{
+    width: 50%;
+    background-color: rgb(255, 0, 0);
+    border: 1px solid rgb(255, 0, 0);
+    box-shadow: 0px 0px 10px 0.1px rgba(255, 0, 0, 0.399);
+    color: rgb(255, 255, 255);
+}
+
+.fullCover > .inputHolder > button[id="closeCategory"]:hover{
+    border: 1px solid rgba(255, 255, 255, 0.583);
+}
+
+
+
+/* Animation */
+
+#rotate{
+    animation-name: rotation;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rotation {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
