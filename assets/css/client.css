@@ -170,11 +170,15 @@ div[class="holder"] > div[class="list"] > div[class="device"][selected]{
 
 div[class="holder"] > div[class="categories"]{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
     gap: 4px;
     margin-top: 10px;
     max-height: 200px;
+    max-width: 100%;
     overflow-y: scroll;
+    width: 100%;
 }
 
 div[class="holder"] > div[class="categories"] > div[class="category"]{
@@ -184,60 +188,11 @@ div[class="holder"] > div[class="categories"] > div[class="category"]{
     font-size: 14px;
     transition: border-color 0.2s;
     /* height: auto; */
-}
-
-div[class="holder"] > div[class="categories"] > div[class="category"] > div[class="files"]{
-    display: none;
-}
-
-div[class="holder"] > div[class="categories"] > div[class="category"][open="true"]{
-    min-height: 140px;
-    height: 140px;
-}
-
-div[class="holder"] > div[class="categories"] > div[class="category"][open="true"] > div[class="files"]{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5px;
-    max-height: 120px;
-    overflow-y: scroll;
-}
-
-div[class="holder"] > div[class="categories"] > div[class="category"] > p{
-    margin: 0;
-    height: 20px;
-}
-
-div[class="holder"] > div[class="categories"] > div[class="category"] > p > i{
-    margin-left: 5px;
-}
-
-div[class="holder"] > div[class="categories"] > div[class="category"][open="true"] > div[class="files"] > div[class="file"]{
-    width: 90%;
-    height: auto;
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.277);
-    border-radius: 6px;
-    padding: 6px 12px;
-}
-
-div[class="holder"] > div[class="categories"] > div[class="category"][open="true"] > div[class="files"] > div[class="file"] > p{
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-}
-
-div[class="holder"] > div[class="categories"] > div[class="category"][open="true"] > div[class="files"] > div[class="file"] > i{
-    margin-left: auto;
-    display: none;
-}
-
-div[class="holder"] > div[class="categories"] > div[class="category"][open="true"] > div[class="files"] > div[class="file"]:hover > i{
-    display: block;
-    cursor: pointer;
+    width: calc(50% - 16px);
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 /* Options */

@@ -40,21 +40,21 @@ const getCategoryData = async () => {
         });
 }
 
-const getContentData = async (categoryID) => {
-    return fetch(`${dataCenter}/getContents`, {
-        credentials: 'include',
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ categoryID: categoryID })
-    })
-        .then(response => response.json())
-        .catch(error => {
-        console.error(error);
-        window.location.href = "https://panel.buhikayesenin.com/";
-        });
-}
+// const getContentData = async (categoryID) => {
+//     return fetch(`${dataCenter}/getContents`, {
+//         credentials: 'include',
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({ categoryID: categoryID })
+//     })
+//         .then(response => response.json())
+//         .catch(error => {
+//         console.error(error);
+//         window.location.href = "https://panel.buhikayesenin.com/";
+//         });
+// }
 
 const insertNewCategory = async (categoryName) => {
     return fetch(`${dataCenter}/insertNewCategory`, {
@@ -72,21 +72,21 @@ const insertNewCategory = async (categoryName) => {
         });
 }
 
-const deleteContent = async (contentID) => {
-    return fetch(`${dataCenter}/deleteContent`, {
-        credentials: 'include',
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ contentID: contentID })
-    })
-        .then(response => response.json())
-        .catch(error => {
-        console.error(error);
-        window.location.href = "https://panel.buhikayesenin.com/";
-        });
-}
+// const deleteContent = async (contentID) => {
+//     return fetch(`${dataCenter}/deleteContent`, {
+//         credentials: 'include',
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({ contentID: contentID })
+//     })
+//         .then(response => response.json())
+//         .catch(error => {
+//         console.error(error);
+//         window.location.href = "https://panel.buhikayesenin.com/";
+//         });
+// }
 
 const updateDeviceInformation = async (deviceID, deviceName, deviceFolders) => {
     return fetch(`${dataCenter}/updateDeviceInformation`, {
@@ -102,28 +102,6 @@ const updateDeviceInformation = async (deviceID, deviceName, deviceFolders) => {
         console.error(error);
         window.location.href = "https://panel.buhikayesenin.com/";
         });
-}
-
-var setDeleteContentsActions = () => {
-    var allDeleteIcons = document.querySelectorAll('i[class="fa-solid fa-trash"]');
-    allDeleteIcons.forEach(element => {
-        element.onclick = async () => {
-            if (confirm("Silmek istediğinize emin misiniz?")) {
-                await deleteContent(element.parentElement.getAttribute('id'))
-                .then(data => {
-                    if(data['task'] == true){
-                        element.parentElement.remove();
-                    }
-                    else{
-                        alert(data['err']['msg']);
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-            }
-        }
-    });
 }
 
 const refreshData = async () => {
@@ -159,78 +137,10 @@ const refreshData = async () => {
         var newCategory = document.createElement('div');
         newCategory.setAttribute('class', 'category');
         newCategory.setAttribute('id', element['id']);
-        var textArea = document.createElement('p');
-        var textAreaIcon = document.createElement('i');
-        textAreaIcon.setAttribute('class', "fa-solid fa-caret-right");
-        textAreaIcon.style.color = "#0061ff";
-        textArea.innerText = " " + element['categoryName'];
-        textArea.prepend(textAreaIcon);
-        newCategory.appendChild(textArea);
+        newCategory.innerText = element['categoryName'];
         document.querySelector('.categories').appendChild(newCategory);
     });
 
-    allCategories = document.querySelectorAll('.categories > .category');
-    for(var i = 0; i < allCategories.length; i++){
-        var element = allCategories[i];
-        var categoryID = element.getAttribute('id');
-        var contents = [];
-        var hiddenFiles = document.createElement('div');
-        hiddenFiles.setAttribute('class', 'files');
-        hiddenFiles.setAttribute('hidden', true);
-        
-        await getContentData(categoryID)
-        .then(data => {
-            if(data['task'] == true){
-                contents = data['results'];
-            }
-            else{
-                contents == null;
-            }
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
-        var addButton = document.createElement('button');
-        addButton.setAttribute('type', 'button');
-        addButton.style.marginBottom = "5px";
-        addButton.innerText = '+ Yeni İçerik';
-
-        (function (currentCategoryID) {
-            contents.forEach(element => {
-                var newFile = document.createElement('div');
-                newFile.setAttribute('class', 'file');
-                newFile.setAttribute('id', element['id']);
-                newFile.setAttribute('title', element['contentHeader']);
-                var p = document.createElement('p');
-                p.innerText = " " + element['contentHeader'];
-                var icon = document.createElement('i');
-                icon.setAttribute('class', 'fa-regular fa-file');
-                icon.style.color = "#0061ff";
-                p.prepend(icon);
-                newFile.appendChild(p);
-                var icon2 = document.createElement('i');
-                icon2.setAttribute('class', 'fa-solid fa-trash');
-                icon2.style.color = "#919191";
-                newFile.appendChild(addButton);
-                newFile.appendChild(icon2);
-                hiddenFiles.appendChild(newFile);
-            });
-    
-            // Use the currentCategoryID variable in the onclick function
-            addButton.onclick = () => {
-                window.location.href = "https://panel.buhikayesenin.com/v1.0/editor?scat=" + currentCategoryID;
-            };
-        })(categoryID);
-
-        hiddenFiles.prepend(addButton);
-        allCategories[i].appendChild(hiddenFiles);
-
-    }
-
-
-    setActionsCategories();
-    setDeleteContentsActions();
     refreshContents.removeAttribute('id');
 }
 
@@ -368,27 +278,8 @@ const loadDevices = () => {
     });
 }
 
-var setActionsCategories = () => {
-    const categories = document.querySelectorAll('.categories .category');
-
-    categories.forEach(category => {
-        category.querySelector('p').onclick = () => {
-            if(category.getAttribute('open') == 'true'){
-                category.setAttribute('open', 'false');
-                category.querySelector('p i').setAttribute('class', 'fa-solid fa-caret-right');
-            }
-            else{
-                category.setAttribute('open', 'true');
-                category.querySelector('p i').setAttribute('class', 'fa-solid fa-caret-down');
-            }
-        };
-    });
-}
-
 getDevices();
-setActionsCategories();
 refreshData();
-setDeleteContentsActions();
 
 var newCategoryButton = document.querySelector('.holder > .categories > button');
 var closeCategoryButton = document.querySelector('#newCategory > div > #closeCategory');
