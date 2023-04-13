@@ -22,6 +22,7 @@ const getContentData = async (categoryID) => {
         .then(response => response.json())
         .catch(error => {
         console.error(error);
+        window.location.href = "https://panel.buhikayesenin.com";
         });
 }
 
@@ -54,7 +55,7 @@ const deleteContent = async (contentID) => {
         .then(response => response.json())
         .catch(error => {
         console.error(error);
-        // window.location.href = "https://panel.buhikayesenin.com/";
+        window.location.href = "https://panel.buhikayesenin.com/";
         });
 }
 
@@ -182,6 +183,7 @@ document.getElementById('rcm').onclick = async () => {
         })
         .catch(error => {
             console.error(error);
+            window.location.href = "https://panel.buhikayesenin.com";
             alert("İşlem yapılamamaktadır. Daha sonra tekrar deneyiniz.");
         });
 }

@@ -149,6 +149,18 @@ div[class="padmar"]{
     height: calc(100% - 56px);
     margin: auto;
     position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+}
+
+div[class="side-left"]{
+    width: 260px;
+    border: 1px solid;
+}
+
+div[class="side-right"]{
+    width: 100%;
 }
 
 div[class="informatic"]{
