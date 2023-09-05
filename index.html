@@ -1,79 +1,67 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/client.css">
-    <script src="https://kit.fontawesome.com/12080290df.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="./assets/img/icon.png" type="image/x-icon" />
-    <title>Bu Hikaye Senin | Panel</title>
+    <link rel="stylesheet" href="./assets/css/d2wycf.css">
+    <link rel="stylesheet" href="./assets/css/fa-icons/all.css">
+    <link rel="icon" href="./assets/image/ico.png" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NMFZK89G3N"></script>
+    <script async src="./assets/js/general.js"></script>
+    <title>Anasayfa | BuHikayeSenin</title>
 </head>
-<body>
+    <body>
+        
+        <div class="trp" id="trp"></div>
 
-    <div class="fullCover" id="newCategory">
-        <div class="inputHolder">
-            <input type="text" name="categoryName" id="inputCatName" placeholder="Kategori Adı">
-            <button type="button" id="addCategory">Ekle</button>
-            <button type="reset" id="closeCategory"><i class="fa-sharp fa-solid fa-xmark" style="color: #ffffff;"></i></button>
-        </div>
-    </div>
-
-    <div class="fullCover" id="newContent">
-        <div class="inputHolder">
-            <input type="text" name="contentHeader" id="inputContentHeader" placeholder="İçerik Başlığı">
-            <textarea id="inp_editor1">
-            </textarea>
-            <button type="button" id="addContent">Ekle</button>
-            <button type="reset" onclick="closeContent()" id="closeContent"><i class="fa-sharp fa-solid fa-xmark" style="color: #ffffff;"></i></button>
-        </div>
-    </div>
-    
-    <div class="holder">
-        <div class="information">
-            <h2>Cihazlarım</h2>
-            <p>Sahip olduğunuz cihazlara buradan ulaşabilir, işlemlerini gerçekleştirebilirsiniz.</p> 
-        </div>
-        <div class="list">
-        </div>
-    </div>
-
-    <div class="holder">
-        <div class="information">
-            <h2>Cihaz Bilgileri</h2>
-            <p>Seçili cihazın bilgilerini değiştirebilir, kategorilerini düzenleyebilirsiniz.</p> 
-        </div>
-
-        <div class="filter">
-            <h2>Lütfen Cihaz Seçiniz</h2>
-        </div>
-
-        <div class="options">
-            <input type="text" id="deviceID" value="1234-5678-9012-abcd" disabled>
-            <input type="text" id="deviceNickname" placeholder="Takma Ad">
-            <div class="buttons">
-                
+        <div class="menu" id="menu">
+            <div class="logo">
+                <img src="./assets/image/logo.png" alt="BuHikayeSenin" style="filter: invert(0.8);">
+                <!-- <h2 id="logofont"><i class="fa-solid fa-box-open"></i>BoxPoint</h2> -->
             </div>
-            <button class="save" id="saveDeviceDetails">Kaydet</button>
+            <div class="profile">
+                <div class="profile-img" style="background-image: url('./assets/image/user.png');"></div>
+                <p class="profile-name">Arda Yasar<br><a href="#"><i class="fa-solid fa-right-from-bracket"></i> Çıkış Yap</a></p>
+            </div>
+            <div class="menu-items">
+                <a href="/index" selected="true"><button type="button"><i class="fa-solid fa-house"></i> Anasayfa</button></a>
+                <a href="/products"><button type="button"><i class="fa-solid fa-boxes-stacked"></i> Cihazlar</button></a>
+                <a href="/categories"><button type="button"><i class="fa-solid fa-folder-open"></i> Kategoriler</button></a>
+                <a href="/contents"><button type="button"><i class="fa-solid fa-folder-tree"></i> İçerikler</button></a>
+                <a href="/content_pool"><button type="button"><i class="fa-solid fa-box-archive"></i> İçerik Havuzu</button></a>
+                <hr color="#3b3b3b" width="100%">
+                <a href="/help"><button type="button"><i class="fa-solid fa-headset"></i> Destek</button></a>
+            </div>
         </div>
 
-    </div>
-
-    <div class="holder">
-        <div class="information">
-            <h2>İçerikler <i class="fa-solid fa-arrows-rotate" style="color: #0061ff; font-size: 16px;"></i></h2>
-            <p>İçerikleri düzenleyebilir, yeni ekleyebilir ve silebilirsiniz.</p> 
+        <div class="topmenu">
+            <button type="button" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+            <h2>BuHikayeSenin</h2>
         </div>
 
-        <div class="categories">
-            <button type="button">+ Yeni Kategori</button>
+        <div class="page">
+
+            <div class="path">
+                <div class="general">
+                    <h1>Anasayfa</h1>
+                    <div class="fast-access">
+                        <button type="button" id="bell" status="active"><i class="fa-regular fa-bell"></i></button>
+                        <button type="button"><i class="fa-regular fa-circle-question"></i></button>
+                    </div>
+                </div>
+                <div class="pathway">
+                    <a href="index.html">Anasayfa</a>
+                    <span><i class="fa-solid fa-chevron-right"></i></span>
+                    <a href="#">Genel</a>
+                </div>
+            </div>
+            <hr style="margin-top: 30px;">
+
         </div>
+    </body>
 
-    </div>
-    
-</body>
-
-<script src="./assets/js/jobEvents.js"></script>
-<!-- <script src="./assets/js/main.js"></script> -->
+    <script src="./assets/js/menu.js"></script>
 
 </html>

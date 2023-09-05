@@ -1,0 +1,565 @@
+@import url('./fonts.css');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+*{
+    font-family: 'Gilroy', sans-serif;
+    font-style: normal;
+}
+
+*:focus{
+    outline: none;
+}
+
+:root{
+    --normal-color: #000000;
+    --passive-color: #63656D;
+    --selected-color: #438DFD;
+    --white-color: #ffffff;
+
+    --button-normal-color: #000000;
+    --button-normal-background-color: #FFFFFF;
+    --button-border-color: #E5E5E7;
+    --button-selected-color: #FFFFFF;
+    --button-selected-background-color: #438DFD;
+
+    --menu-normal-color: #000000;
+    --menu-selected-color: #438DFD;
+    --menu-selected-background-color: #FFFFFF;
+    --menu-passive-color: #52565E;
+    --menu-profile-border-color: #dcdbde;
+    --menu-background-color: #f2f2f2;
+
+    --page-current-path-color: #F5F4F8;
+    --page-path-text-color: #8b8b8b;
+
+    --main-background-color: #FFFFFF;
+
+    --directory-active-background-color: #F5F4F8;
+
+    --notification-color: #fd4343;
+
+    --datatable-item-background-color: #fafafa;
+    --dot-good-status: #00b300;
+    --dot-normal-status: #438DFD;
+    --dot-bad-status: #fd4343;
+
+    --all: #000000;
+    --red: #fd4343;
+    --white: rgb(136, 136, 136);
+    --green: #00b300;
+}
+
+html{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    min-width: 320px;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--main-background-color);
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+/* ----------------------------- */
+/* --------- Menu Rules -------- */
+/* ----------------------------- */
+
+div[class='trp']{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #0000009c;
+    z-index: 5;
+    display: none;
+}
+
+div[class='menu']{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 340px;
+    height: 100%;
+    background-color: var(--menu-background-color);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+div[class='menu']::-webkit-scrollbar{
+    width: 0px;
+    background: transparent;
+}
+
+/* Logo */
+
+div[class='menu'] > div[class='logo']{
+    font-family: 'Josefin Sans', sans-serif !important;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+div[class='menu'] > div[class='logo'] > img{
+    width: 60%;
+}
+
+div[class='menu'] > div[class='logo'] > h2{
+    font-size: 32px;
+    font-weight: 700;
+    color: #2A2A32;
+    font-style: italic;
+    text-shadow: 0px 0px 10px rgba(0,0,0,0.05);
+}
+
+div[class='menu'] > div[class='logo'] > h2 > i{
+    color: var(--button-selected-background-color);
+}
+
+div[class='menu'] > div[class='profile']{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+div[class='menu'] > div[class='profile'] > div[class='profile-img']{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid var(--menu-profile-border-color);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+div[class='menu'] > div[class='profile'] > p[class='profile-name']{
+    font-size: 18px;
+}
+
+div[class='menu'] > div[class='profile'] > p[class='profile-name'] > a{
+    font-size: 14px;
+}
+
+div[class='menu'] > div[class='menu-items']{
+    width: 260px;
+    margin: 0 auto;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+div[class='menu'] > div[class='menu-items'] > a{
+    width: 100%;
+    height: 60px;
+}
+
+div[class='menu'] > div[class='menu-items'] > a > button{
+    width: 100%;
+    padding: 0 20px;
+    height: 60px;
+    text-align: left;
+    background-color: transparent;
+    border: 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--menu-passive-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: color 0.1s;
+}
+
+div[class='menu'] > div[class='menu-items'] > a:hover > button{
+    color: var(--menu-selected-color);
+}
+
+div[class='menu'] > div[class='menu-items'] > a[selected='true'] > button{
+    color: var(--menu-selected-color);
+    background-color: var(--menu-selected-background-color);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.03);
+}
+
+/* Top Menu */
+
+div[class='topmenu']{
+    width: 100%;
+    height: 50px;
+    background-color: var(--menu-selected-color);
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    /* border: 1px solid; */
+}
+
+div[class='topmenu'] > button#menu-toggle{
+    height: 50px;
+    width: 50px;
+    font-size: 22px;
+    background-color: transparent;
+    border: 0;
+    color: var(--white-color);
+    cursor: pointer;
+}
+
+div[class='topmenu'] > h2{
+    font-size: 22px;
+    font-style: italic;
+    color: var(--white-color);
+    cursor: default
+}
+
+/* Page */
+
+div[class='page']{
+    height: 100%;
+    width: calc(100% - 400px);
+    overflow-y: scroll;
+    padding: 0 30px;
+}
+
+div[class='page'] > div[class='path']{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+div[class='page'] > div[class='path'] > div[class='general']{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+div[class='page'] > div[class='path'] > div[class='general'] > div[class='fast-access']{
+    margin-left: auto;
+    margin-right: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+div[class='page'] > div[class='path'] > div[class='general'] > div[class='fast-access'] > button{
+    font-size: 24px;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+div[class='page'] > div[class='path'] > div[class='general'] > div[class='fast-access'] > button#bell{
+    position: relative;
+}
+
+div[class='page'] > div[class='path'] > div[class='general'] > div[class='fast-access'] > button#bell[status='active']::after{
+    content: "•";
+    display: inline-block;
+    font-size: 52px;
+    color: var(--notification-color);
+    position: absolute;
+    top: -20px;
+    right: -5px;
+}
+
+div[class='page'] > div[class='path'] > div[class='pathway']{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+}
+
+div[class='page'] > div[class='path'] > div[class='pathway'] > a{
+    font-size: 16px;
+    padding: 8px 14px 5px 14px;
+    border: 1px solid var(--button-border-color);
+    border-radius: 4px;
+    background-color: transparent;
+    text-decoration: none;
+    color: var(--page-path-text-color);
+    font-weight: 500;
+}
+
+div[class='page'] > div[class='path'] > div[class='pathway'] > a:last-child{
+    background-color: var(--page-current-path-color);
+    color: var(--button-selected-background-color);
+}
+
+div[class='page'] > div[class='filters']{
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+div[class='page'] > div[class='filters'] > input[type='search']{
+    width: 320px;
+    height: 40px;
+    padding: 6px 24px;
+    border: 2px solid var(--button-border-color);
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+div[class='page'] > div[class='filters'] > input[type='search']:focus{
+    border: 2px solid var(--button-selected-background-color);
+}
+
+div[class='page'] > div[class='filters'] > div[class='status']{
+    width: auto;
+    height: 38px;
+    /* border: 2px solid var(--button-border-color); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    border-radius: 4px;
+    gap: 0px;
+}
+
+div[class='page'] > div[class='filters'] > div[class='status'] > button{
+    width: auto;
+    height: 100%;
+    padding: 4px 12px;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-right: 0px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.45);
+    background-color: transparent;
+    cursor: pointer;
+}
+
+div[class='page'] > div[class='filters'] > div[class='status'] > button:first-child{
+    border-radius: 4px 0px 0px 4px;
+}
+
+div[class='page'] > div[class='filters'] > div[class='status'] > button:last-child{
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0px 4px 4px 0px;
+}
+
+div[class='page'] > div[class='filters'] > div[class='status'] > button[status='active']{
+    font-size: 14px;
+    background-color: var(--button-selected-background-color);
+    color: var(--white-color);
+}
+
+/* Datatable - Products */
+
+div[class='page'] > div[class='datatable']{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 20px;
+    gap: 20px;
+    justify-content: center;
+}
+
+div[class='page'] > div[class='datatable'] > div[class='item']{
+    width: 160px;
+    height: 260px;
+    padding: 10px;
+    border: 1px solid var(--button-border-color);
+    border-radius: 8px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.05);
+    background-color: var(--datatable-item-background-color);
+}
+
+div[class='page'] > div[class='datatable'] > div[class='item'] > div[class='item-info']{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+div[class='page'] > div[class='datatable'] > div[class='item'] > div[class='item-info'] > h3{
+    font-size: 18px;
+    font-weight: 600;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-bottom: 0;
+    cursor: pointer;
+    transition: color 0.1s, text-decoration 0.1s;
+}
+
+div[class='page'] > div[class='datatable'] > div[class='item'] > div[class='item-info'] > h3:hover{
+    color: var(--button-selected-background-color);
+    text-decoration: underline;
+}
+
+div[class='page'] > div[class='datatable'] > div[class='item'] > div[class='item-info'] > p#barcode{
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: center;
+    /* text-decoration: underline; */
+}
+
+div[class='page'] > div[class='datatable'] > div[class='item'] > div[class='item-img']{
+    width: 100%;
+    aspect-ratio: 1/1;
+    margin: 0 auto;
+    border: 1px solid;
+    border-radius: 4px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+div[class='page'] > div[class='datatable'] > div[class='item'] > div[class='item-img'] > div[class='price-info']{
+    width: 90%;
+    height: 24px;
+    padding: 2px 0px;
+    position: absolute;
+    bottom: 10px;
+    left: 5%;
+    background-color: rgb(0, 0, 0);
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    color: var(--white-color);
+    border-radius: 14px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+div[class='page'] > div[class='datatable'] > div[class='item'] > div[class='item-img'] > div[class='price-info'] > pricestatus{
+    font-size: 28px;
+    margin-top: 3px;
+    position: relative;
+    height: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--dot-normal-status);
+}
+
+div[class='page'] > div[class='datatable'] > div[class='item'] > div[class='item-img'] > div[class='price-info'] > pricestatus[status='bad']{
+    color: var(--dot-bad-status);
+}
+
+div[class='page'] > div[class='datatable'] > div[class='item'] > div[class='item-img'] > div[class='price-info'] > pricestatus[status='normal']{
+    color: var(--dot-normal-status);
+}
+
+
+div[class='page'] > div[class='datatable'] > div[class='item'] > div[class='item-img'] > div[class='price-info'] > pricestatus[status='good']{
+    color: var(--dot-good-status);
+}
+
+
+div[class='page'] > div[class='datatable'] > div[class='item'] > div[class='item-img'] > div[class='price-info'] > pricestatus::before{
+    position: absolute;
+    content: "";
+    width: 0px;
+    height: 0px;
+    margin-bottom: 3px;
+    border-radius: 50%;
+    background-color: var(--dot-normal-status);
+    animation: watermark-animation 4s infinite ease-in-out;
+    animation-delay: 2s;
+    opacity: 0;
+}
+
+div[class='page'] > div[class='datatable'] > div[class='item'] > div[class='item-img'] > div[class='price-info'] > pricestatus[status='bad']::before{
+    background-color: var(--dot-bad-status);
+}
+
+div[class='page'] > div[class='datatable'] > div[class='item'] > div[class='item-img'] > div[class='price-info'] > pricestatus[status='normal']::before{
+    background-color: var(--dot-normal-status);
+}
+
+div[class='page'] > div[class='datatable'] > div[class='item'] > div[class='item-img'] > div[class='price-info'] > pricestatus[status='good']::before{
+    background-color: var(--dot-good-status);
+}
+
+div[class='page'] > div[class='datatable'] > div[class='item'] > div[class='item-img'] > div[class='price-info'] > p{
+    margin: 0;
+    padding: 0;
+}
+
+/* Resize Rules */
+
+@media screen and (max-width: 850px){
+
+    body{
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: var(--main-background-color);
+        display: block;
+    }
+
+    div[class='menu']{
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 6;
+    }
+
+    div[class='topmenu']{
+        display: flex;
+    }
+
+    div[class='page']{
+        width: calc(100% - 60px);
+        height: calc(100% - 50px);
+    }
+
+    div[class='page'] > div[class='datatable']{
+        gap: 10px;
+    }
+
+    div[class='page'] > div[class='datatable'] > div[class='item']{
+        width: 140px;
+        height: 240px;
+        padding: 8px;
+        border: 1px solid var(--button-border-color);
+        border-radius: 8px;
+        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.05);
+        background-color: var(--datatable-item-background-color);
+    }
+}
+
+/* Animations */
+
+@keyframes watermark-animation {
+    0% {width: 0px; height: 0px; opacity: 0;}
+    30% {width: 20px; height: 20px; opacity: 0.6;}
+    50% {width: 24px; height: 24px; opacity: 0.2;}
+    51% {width: 0px; height: 0px; opacity: 0;}
+    100% {width: 0px; height: 0px; opacity: 0;}
+}
